@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment-08-Case02</title>
+
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+
+        #middle {
+            display: flex;
+            flex-direction: row;
+        }
+
+        #first, #last {
+            width: 500px;
+            height: 2px;
+            background-color: black;
+        }
+
+        .color-box {
+            width: 70px;
+            height: 30px;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        #top-box{
+            position: absolute;
+            left: 500px;
+            top: 290px;
+        }
+        #bottom-box{
+            position: absolute;
+            right: 500px;
+            top: 400px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="color-box" id="top-box"></div>
+
+<div id="first"></div>
+
+<section id="middle">
+
+    <div class="color-box"></div>
+    <div class="color-box"></div>
+    <div class="color-box"></div>
+    <div class="color-box"></div>
+</section>
+
+<div id="last"></div>
+
+<div class="color-box" id="bottom-box"></div>
+
+
+<script>
+
+    let colors = ['red', 'green', 'blue', 'yellow', 'pink', '#d626c7'];
+
+    const updateColors = () => {
+
+        const last = colors.pop();
+        colors.unshift(last);
+
+        const boxes = document.querySelectorAll('.color-box');
+        boxes.forEach((box, i) => {
+            box.style.backgroundColor = colors[i];
+        });
+    };
+
+    updateColors();
+
+    setInterval(updateColors, 3000);
+</script>
+
+</body>
+</html>
